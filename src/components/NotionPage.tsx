@@ -1,6 +1,7 @@
 import { getPageRecordMap } from "@/utils";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import Head from "next/head";
+import { Fragment, useEffect, useState } from "react";
 import { NotionRenderer } from "react-notion-x";
 import { FadeLoader } from "react-spinners";
 
@@ -34,7 +35,7 @@ interface INotionPageProps {
 
 const NotionPage = (props: INotionPageProps) => {
   const { pageId } = props;
-  const [recordMap, setRecordMap] = useState();
+  const [recordMap, setRecordMap] = useState<any>();
 
   useEffect(() => {
     if (!!recordMap) {
@@ -52,27 +53,32 @@ const NotionPage = (props: INotionPageProps) => {
   }
 
   return (
-    <NotionRenderer
-      recordMap={recordMap}
-      fullPage
-      // darkMode
-      mapPageUrl={(pageId) => {
-        if (pageId === "167a4206-af89-454d-a731-0d49f1d9b794") {
-          return "../";
-        }
-        if (pageId === "b341973f-45ad-45c3-87b5-d925446abf05") {
-          return "../blog";
-        }
-        return `./notion-page/${pageId}`;
-      }}
-      components={{
-        Code,
-        Collection,
-        Equation,
-        Modal,
-        Pdf,
-      }}
-    />
+    <Fragment>
+      <Head>
+        <title>Amighty | {recordMap.block[pageId].value.properties.title[0]}</title>
+      </Head>
+      <NotionRenderer
+        recordMap={recordMap}
+        fullPage
+        // darkMode
+        mapPageUrl={(pageId) => {
+          if (pageId === "8a8bdba8-7cd6-481a-a95b-25fc0e82a615") {
+            return "../";
+          }
+          if (pageId === "b341973f-45ad-45c3-87b5-d925446abf05") {
+            return "../blog";
+          }
+          return `./notion-page/${pageId}`;
+        }}
+        components={{
+          Code,
+          Collection,
+          Equation,
+          Modal,
+          Pdf,
+        }}
+      />
+    </Fragment>
   );
 };
 
