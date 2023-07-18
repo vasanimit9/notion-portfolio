@@ -119,12 +119,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <DesktopSideBar routes={routes} />
 
         <div
-          className="sm:w-[calc(100vw - 256px)]"
+          className="sm:w-[calc(100vw - 256px)] sm:h-screen"
           style={{
             // width: 'calc(100vw - 256px)',
             width: "100%",
             overflow: "auto",
-            height: "100vh",
           }}
         >
           <Component {...pageProps} />
