@@ -69,6 +69,9 @@ export default function App({ Component, pageProps }: AppProps) {
             -webkit-tap-highlight-color: transparent;
             font-family: var(--font-inter);
           }
+          body {
+            overscroll-behavior-y: none;
+          }
         `,
           }}
         />
