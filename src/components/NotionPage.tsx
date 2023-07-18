@@ -39,6 +39,7 @@ const NotionPage = (props: INotionPageProps) => {
 
   useEffect(() => {
     if (!!recordMap) {
+      document.title = `Amighty | ${recordMap.block[pageId].value.properties.title[0]}`;
       return;
     }
     getPageRecordMap(pageId).then(setRecordMap);
@@ -54,9 +55,6 @@ const NotionPage = (props: INotionPageProps) => {
 
   return (
     <Fragment>
-      <Head>
-        <title>Amighty | {recordMap.block[pageId].value.properties.title[0]}</title>
-      </Head>
       <NotionRenderer
         recordMap={recordMap}
         fullPage

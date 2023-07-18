@@ -16,7 +16,12 @@ export const getPageRecordMap = async (pageId: string) => {
       new Date().getTime() - new Date(pageData.fetchTime).getTime() >
         60 * 60 * 1000
     ) {
-      const pageRecordMapResponse = await fetchPageData();
+      const pageRecordMapResponse = await fetchPageData().catch(() => {
+        if(!!stringifiedPageData) {
+          return pageData.recordMap;
+        }
+        throw new Error('No network and no stored data');
+      });
       globalThis.window?.localStorage.setItem(
         pageId,
         JSON.stringify({
