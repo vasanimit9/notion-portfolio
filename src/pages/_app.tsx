@@ -15,6 +15,7 @@ import DesktopSideBar from "@/components/DesktopSideBar";
 import { Inter } from "next/font/google";
 import {
   faBars,
+  faGlasses,
   faHouseChimney,
   faPenNib,
 } from "@fortawesome/free-solid-svg-icons";
@@ -35,6 +36,11 @@ const routes = [
     icon: faPenNib,
     link: "/blog",
   },
+  {
+    name: "Reading List",
+    icon: faGlasses,
+    link: '/reading-list'
+  }
   // {
   //   name: "More",
   //   icon: faBars,

@@ -66,6 +66,9 @@ const NotionPage = (props: INotionPageProps) => {
           if (pageId === "b341973f-45ad-45c3-87b5-d925446abf05") {
             return "../blog";
           }
+          if(pageId === 'd07c0417-ec70-486d-b312-373966fd7cbc') {
+            return '../reading-list';
+          }
           return `./notion-page/${pageId}`;
         }}
         components={{
