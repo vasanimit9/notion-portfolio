@@ -59,8 +59,13 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <link rel="icon" type="image/x-icon" href="/mit_logo.png" sizes="any" />
-        {/* <link rel="manifest" href="/manifest.json" /> */}
+        <link
+          rel="icon"
+          type="image/x-icon"
+          href="/mit_logo.png"
+          sizes="any"
+        />
+        <link rel="manifest" href="/manifest.json" />
         <style
           dangerouslySetInnerHTML={{
             __html:
@@ -91,10 +96,9 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </div>
         <MobileNavigationBar routes={routes} />
-        {false && (
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
                   window.addEventListener("load", function () {
                     navigator.serviceWorker
                       .register("/service_worker.js")
@@ -111,9 +115,8 @@ export default function App({ Component, pageProps }: AppProps) {
                       });
                   });
           `,
-            }}
-          />
-        )}
+          }}
+        />
       </div>
     </>
   );
