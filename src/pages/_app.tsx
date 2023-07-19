@@ -37,7 +37,7 @@ const routes = [
     link: "/blog",
   },
   {
-    name: "Reading List",
+    name: "Reading",
     icon: faGlasses,
     link: '/reading-list'
   }
@@ -51,7 +51,6 @@ const routes = [
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     if ("serviceWorker" in navigator) {
-      
     } else {
       console.log("Service Worker is not supported by browser.");
     }
@@ -81,26 +80,7 @@ export default function App({ Component, pageProps }: AppProps) {
         `,
           }}
         />
-        <script dangerouslySetInnerHTML={{
-          __html: `
 
-          window.addEventListener("load", function () {
-            navigator.serviceWorker
-              .register("./service_worker.js")
-              .then(
-                function (registration) {
-                  console.log("Worker registration successful", registration.scope);
-                },
-                function (err) {
-                  console.log("Worker registration failed", err);
-                }
-              )
-              .catch(function (err) {
-                console.log(err);
-              });
-          });
-          `
-        }} />
         {/* <Script>
           {`
             window.addEventListener("load", function () {
@@ -135,6 +115,28 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </div>
         <MobileNavigationBar routes={routes} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+
+          window.addEventListener("load", function () {
+            navigator.serviceWorker
+              .register("./service_worker.js")
+              .then(
+                function (registration) {
+                  console.log("Worker registration successful", registration.scope);
+                },
+                function (err) {
+                  console.log("Worker registration failed", err);
+                }
+              )
+              .catch(function (err) {
+                console.log(err);
+              });
+          });
+          `,
+          }}
+        />
       </div>
     </>
   );

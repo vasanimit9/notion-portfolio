@@ -47,12 +47,12 @@ const MobileNavigationBar = (props: IMobileNavigationBarProps) => {
             )}
             <div className="flex justify-center">
               <div
-                className={`w-[64px] flex flex-col items-center my-2 py-1 px-2 rounded-xl`}
+                className={`w-[72px] flex flex-col items-center my-2 py-1 px-2 rounded-xl`}
               >
                 <div className="text-xl">
                   <FontAwesomeIcon icon={route.icon} />
                 </div>
-                <div className="text-xs">{route.name}</div>
+                <div className="text-sm">{route.name}</div>
               </div>
             </div>
           </Link>

@@ -1,10 +1,12 @@
+'use client'
+
 import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 interface IDesktopSideBarProps {
-  routes: {
+  routes?: {
     name: string;
     icon: IconDefinition;
     link: string;
@@ -18,7 +20,7 @@ const DesktopSideBar = (props: IDesktopSideBarProps) => {
   return (
     <div className="max-sm:hidden min-w-[200px] h-screen p-0.5 border-r">
       <div className="py-4 px-2">
-        {routes.map((route, index) => {
+        {(routes ?? []).map((route, index) => {
           return (
             <div key={index} className={`py-0.5`}>
               <Link

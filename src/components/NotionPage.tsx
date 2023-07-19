@@ -66,7 +66,7 @@ const NotionPage = (props: INotionPageProps) => {
           if (pageId === "b341973f-45ad-45c3-87b5-d925446abf05") {
             return "../blog";
           }
-          if(pageId === 'd07c0417-ec70-486d-b312-373966fd7cbc') {
+          if(pageId === '636c5b51-90ec-48f5-b955-edb7f76335be') {
             return '../reading-list';
           }
           return `./notion-page/${pageId}`;
