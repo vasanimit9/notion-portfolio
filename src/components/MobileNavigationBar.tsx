@@ -17,7 +17,7 @@ interface IMobileNavigationBarProps {
 }
 
 const MobileNavigationBar = (props: IMobileNavigationBarProps) => {
-  const { pathname } = useRouter();
+  const { pathname, push } = useRouter();
   const { routes } = props;
 
   if(!routes.some(route => route.link === pathname)) {

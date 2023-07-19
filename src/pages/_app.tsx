@@ -21,7 +21,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
 import { useEffect } from "react";
-import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -80,32 +79,12 @@ export default function App({ Component, pageProps }: AppProps) {
         `,
           }}
         />
-
-        {/* <Script>
-          {`
-            window.addEventListener("load", function () {
-              navigator.serviceWorker
-                .register("./service_worker.js")
-                .then(
-                  function (registration) {
-                    console.log("Worker registration successful", registration.scope);
-                  },
-                  function (err) {
-                    console.log("Worker registration failed", err);
-                  }
-                )
-                .catch(function (err) {
-                  console.log(err);
-                });
-            });
-          `}
-        </Script> */}
       </Head>
       <div className={`${inter.variable} flex max-sm:flex-col`}>
         <DesktopSideBar routes={routes} />
 
         <div
-          className="sm:w-[calc(100vw - 256px)] h-screen"
+          className="sm:min-w-[calc(100vw - 200px)] h-screen"
           style={{
             // width: 'calc(100vw - 256px)',
             width: "100%",

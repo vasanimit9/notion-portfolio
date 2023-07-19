@@ -1,9 +1,9 @@
-let CACHE_NAME = 'amighty_v2';
+let CACHE_NAME = 'amighty_v3';
 
 let URLS_TO_CACHE = [
   './',
   './blog',
-  './reading'
+  './reading-list'
 ];
 
 self.addEventListener('install', event => {
