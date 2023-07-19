@@ -21,6 +21,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -48,6 +49,7 @@ const routes = [
 ];
 
 export default function App({ Component, pageProps }: AppProps) {
+  const {pathname} = useRouter();
   useEffect(() => {
     if ("serviceWorker" in navigator) {
     } else {
@@ -60,10 +62,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <link
           rel="icon"
           type="image/x-icon"
-          href="./mit_logo.png"
+          href="/mit_logo.png"
           sizes="any"
         />
-        <link rel="manifest" href="./manifest.json" />
+        <link rel="manifest" href="/manifest.json" />
         <style
           dangerouslySetInnerHTML={{
             __html:
@@ -97,22 +99,21 @@ export default function App({ Component, pageProps }: AppProps) {
         <script
           dangerouslySetInnerHTML={{
             __html: `
-
-          window.addEventListener("load", function () {
-            navigator.serviceWorker
-              .register("./service_worker.js")
-              .then(
-                function (registration) {
-                  console.log("Worker registration successful", registration.scope);
-                },
-                function (err) {
-                  console.log("Worker registration failed", err);
-                }
-              )
-              .catch(function (err) {
-                console.log(err);
-              });
-          });
+                  window.addEventListener("load", function () {
+                    navigator.serviceWorker
+                      .register("/service_worker.js")
+                      .then(
+                        function (registration) {
+                          console.log("Worker registration successful", registration.scope);
+                        },
+                        function (err) {
+                          console.log("Worker registration failed", err);
+                        }
+                      )
+                      .catch(function (err) {
+                        console.log(err);
+                      });
+                  });
           `,
           }}
         />
