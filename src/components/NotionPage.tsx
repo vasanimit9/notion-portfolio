@@ -1,6 +1,5 @@
 import { getPageRecordMap } from "@/utils";
 import dynamic from "next/dynamic";
-import Head from "next/head";
 import { Fragment, useEffect, useState } from "react";
 import { NotionRenderer } from "react-notion-x";
 import { FadeLoader } from "react-spinners";
@@ -45,18 +44,6 @@ const NotionPage = (props: INotionPageProps) => {
     getPageRecordMap(pageId).then(setRecordMap);
   }, [pageId, recordMap]);
 
-  useEffect(() => {
-    // const oldPadding = document.body.style.paddingBottom
-    const notionPage = document.querySelector('.notion-page-has-cover.notion-page-has-icon.notion-page-has-text-icon') as HTMLDivElement;
-    if(!notionPage) {
-      return;
-    }
-    notionPage.style.paddingTop = "64px";
-    // setTimeout(() => {
-    //   document.body.style.paddingBottom = oldPadding;
-    // }, 333);
-  }, []);
-
   if (!recordMap) {
     return (
       <div className="h-screen flex flex-col items-center justify-center">
@@ -67,6 +54,17 @@ const NotionPage = (props: INotionPageProps) => {
 
   return (
     <Fragment>
+      <style dangerouslySetInnerHTML={{
+        __html: /* css */ `
+          .notion-frame {
+            height: 100vh;
+            overflow: hidden;
+          }
+          .notion-page-scroller {
+            overflow: auto;
+          }
+        `
+        }} />
       <NotionRenderer
         recordMap={recordMap}
         fullPage
