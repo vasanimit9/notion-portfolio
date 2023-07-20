@@ -69,7 +69,7 @@ export default function App({ Component, pageProps }: AppProps) {
           }
           .notion-header {
             backdrop-filter: blur(16px);
-            background: rgba(255, 255, 255, 0.75) !important;
+            background: rgba(255, 255, 255, 0.32) !important;
           }
         `,
           }}
