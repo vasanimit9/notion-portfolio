@@ -46,11 +46,15 @@ const NotionPage = (props: INotionPageProps) => {
   }, [pageId, recordMap]);
 
   useEffect(() => {
-    const oldPadding = document.body.style.paddingBottom
-    document.body.style.paddingBottom = '8px';
-    setTimeout(() => {
-      document.body.style.paddingBottom = oldPadding;
-    }, 333);
+    // const oldPadding = document.body.style.paddingBottom
+    const notionPage = document.querySelector('.notion-page-has-cover.notion-page-has-icon.notion-page-has-text-icon') as HTMLDivElement;
+    if(!notionPage) {
+      return;
+    }
+    notionPage.style.paddingBottom = "64px";
+    // setTimeout(() => {
+    //   document.body.style.paddingBottom = oldPadding;
+    // }, 333);
   }, []);
 
   if (!recordMap) {
