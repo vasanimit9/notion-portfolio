@@ -71,6 +71,12 @@ export default function App({ Component, pageProps }: AppProps) {
             backdrop-filter: blur(16px);
             background: rgba(255, 255, 255, 0.32) !important;
           }
+          .notion-frame {
+            padding-top: 0px !important;
+          }
+          .notion-page-scroller {
+            min-height: calc(100vh - 10px - var(--notion-header-height)) !important;
+          }
         `,
           }}
         />
