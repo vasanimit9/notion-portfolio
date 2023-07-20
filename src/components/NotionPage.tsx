@@ -32,6 +32,7 @@ const Modal = dynamic(
 
 interface INotionPageProps {
   pageId: string;
+  rendererProps?: Omit<React.ComponentProps<typeof NotionRenderer>, 'recordMap'>;
 }
 
 const NotionPage = (props: INotionPageProps) => {
@@ -56,8 +57,9 @@ const NotionPage = (props: INotionPageProps) => {
 
   return (
     <Fragment>
-      <style dangerouslySetInnerHTML={{
-        __html: /* css */ `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: /* css */ `
           /*
           .notion-app {
             height: 100vh;
@@ -71,12 +73,12 @@ const NotionPage = (props: INotionPageProps) => {
             overflow: auto;
           }
           */
-        `
-        }} />
+        `,
+        }}
+      />
       <NotionRenderer
         recordMap={recordMap}
         fullPage
-        // darkMode
         mapPageUrl={(pageId) => {
           if (pageId === "8a8bdba8-7cd6-481a-a95b-25fc0e82a615") {
             return "../";
@@ -84,8 +86,8 @@ const NotionPage = (props: INotionPageProps) => {
           if (pageId === "b341973f-45ad-45c3-87b5-d925446abf05") {
             return "../blog";
           }
-          if(pageId === '636c5b51-90ec-48f5-b955-edb7f76335be') {
-            return '../reading-list';
+          if (pageId === "636c5b51-90ec-48f5-b955-edb7f76335be") {
+            return "../reading-list";
           }
           return `./notion-page/${pageId}`;
         }}
@@ -96,8 +98,9 @@ const NotionPage = (props: INotionPageProps) => {
           Modal,
           Pdf,
           nextImage: Image,
-          nextLink: Link
+          nextLink: Link,
         }}
+        {...(props.rendererProps ?? {})}
       />
     </Fragment>
   );
