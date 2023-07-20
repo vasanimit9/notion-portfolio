@@ -36,7 +36,6 @@ interface INotionPageProps {
 const NotionPage = (props: INotionPageProps) => {
   const { pageId } = props;
   const [recordMap, setRecordMap] = useState<any>();
-  const [showLoader, setShowLoader] = useState(!globalThis.window);
 
   useEffect(() => {
     if (!!recordMap) {
@@ -47,12 +46,14 @@ const NotionPage = (props: INotionPageProps) => {
   }, [pageId, recordMap]);
 
   useEffect(() => {
+    const oldPadding = document.body.style.paddingBottom
+    document.body.style.paddingBottom = '8px';
     setTimeout(() => {
-      setShowLoader(false);
-    }, 1000)
+      document.body.style.paddingBottom = oldPadding;
+    }, 333);
   }, []);
 
-  if (!recordMap || showLoader) {
+  if (!recordMap) {
     return (
       <div className="h-screen flex flex-col items-center justify-center">
         <FadeLoader color={"rgb(154, 162, 160)"} />
