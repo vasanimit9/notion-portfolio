@@ -1,4 +1,4 @@
-let CACHE_NAME = 'amighty_v8_beta_8';
+let CACHE_NAME = 'amighty_v8_beta_9';
 
 let URLS_TO_CACHE = [
   '/',
