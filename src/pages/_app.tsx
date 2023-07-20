@@ -78,7 +78,6 @@ export default function App({ Component, pageProps }: AppProps) {
           style={{
             // width: 'calc(100vw - 256px)',
             width: "100%",
-            overflow: "auto",
           }}
         >
           <Component {...pageProps} />
