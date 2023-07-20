@@ -51,7 +51,7 @@ const NotionPage = (props: INotionPageProps) => {
     if(!notionPage) {
       return;
     }
-    notionPage.style.paddingBottom = "64px";
+    notionPage.style.paddingTop = "64px";
     // setTimeout(() => {
     //   document.body.style.paddingBottom = oldPadding;
     // }, 333);
