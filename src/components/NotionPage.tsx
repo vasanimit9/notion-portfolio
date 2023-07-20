@@ -1,5 +1,7 @@
 import { getPageRecordMap } from "@/utils";
 import dynamic from "next/dynamic";
+import Image from "next/image";
+import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 import { NotionRenderer } from "react-notion-x";
 import { FadeLoader } from "react-spinners";
@@ -93,6 +95,8 @@ const NotionPage = (props: INotionPageProps) => {
           Equation,
           Modal,
           Pdf,
+          nextImage: Image,
+          nextLink: Link
         }}
       />
     </Fragment>
