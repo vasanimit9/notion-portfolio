@@ -56,6 +56,7 @@ const NotionPage = (props: INotionPageProps) => {
     <Fragment>
       <style dangerouslySetInnerHTML={{
         __html: /* css */ `
+          /*
           .notion-app {
             height: 100vh;
             overflow: hidden;
@@ -67,6 +68,7 @@ const NotionPage = (props: INotionPageProps) => {
           .notion-page-scroller {
             overflow: auto;
           }
+          */
         `
         }} />
       <NotionRenderer
