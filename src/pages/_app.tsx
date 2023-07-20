@@ -1,7 +1,5 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-
-import "@fortawesome/fontawesome-svg-core/styles.css";
 // core styles shared by all of react-notion-x (required)
 import "react-notion-x/src/styles.css";
 
@@ -13,12 +11,7 @@ import "katex/dist/katex.min.css";
 import MobileNavigationBar from "@/components/MobileNavigationBar";
 import DesktopSideBar from "@/components/DesktopSideBar";
 import { Inter } from "next/font/google";
-import {
-  faBars,
-  faGlasses,
-  faHouseChimney,
-  faPenNib,
-} from "@fortawesome/free-solid-svg-icons";
+
 import Head from "next/head";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
@@ -28,19 +21,19 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const routes = [
   {
     name: "Home",
-    icon: faHouseChimney,
+    icon: "🏡",
     link: "/",
   },
   {
     name: "Blog",
-    icon: faPenNib,
+    icon: "✍️",
     link: "/blog",
   },
   {
     name: "Reading",
-    icon: faGlasses,
-    link: '/reading-list'
-  }
+    icon: "👓",
+    link: "/reading-list",
+  },
   // {
   //   name: "More",
   //   icon: faBars,
@@ -49,7 +42,7 @@ const routes = [
 ];
 
 export default function App({ Component, pageProps }: AppProps) {
-  const {pathname} = useRouter();
+  const { pathname } = useRouter();
   useEffect(() => {
     if ("serviceWorker" in navigator) {
     } else {
@@ -59,12 +52,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <link
-          rel="icon"
-          type="image/x-icon"
-          href="/mit_logo.png"
-          sizes="any"
-        />
+        <link rel="icon" type="image/x-icon" href="/mit_logo.png" sizes="any" />
         <link rel="manifest" href="/manifest.json" />
         <style
           dangerouslySetInnerHTML={{

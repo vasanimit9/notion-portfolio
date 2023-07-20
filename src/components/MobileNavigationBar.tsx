@@ -1,17 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  IconDefinition,
-  faBars,
-  faHouse,
-  faPenNib,
-} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 interface IMobileNavigationBarProps {
   routes: {
     name: string;
-    icon: IconDefinition;
+    icon: string;
     link: string;
   }[];
 }
@@ -49,9 +42,7 @@ const MobileNavigationBar = (props: IMobileNavigationBarProps) => {
               <div
                 className={`w-[72px] flex flex-col items-center my-2 py-1 px-2 rounded-xl`}
               >
-                <div className="text-xl">
-                  <FontAwesomeIcon icon={route.icon} />
-                </div>
+                <div className="text-xl">{route.icon}</div>
                 <div className="text-sm">{route.name}</div>
               </div>
             </div>

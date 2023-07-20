@@ -1,14 +1,10 @@
-'use client'
-
-import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 interface IDesktopSideBarProps {
   routes?: {
     name: string;
-    icon: IconDefinition;
+    icon: string;
     link: string;
   }[];
 }
@@ -30,7 +26,7 @@ const DesktopSideBar = (props: IDesktopSideBarProps) => {
                 }`}
               >
                 <div className="min-w-[32px]">
-                  <FontAwesomeIcon icon={route.icon} size="xs" />
+                  {route.icon}
                 </div>
                 <div className="flex-1 text-sm">{route.name}</div>
               </Link>
