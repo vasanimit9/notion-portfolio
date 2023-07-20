@@ -74,7 +74,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <DesktopSideBar routes={routes} />
 
         <div
-          className="sm:min-w-[calc(100vw - 200px)] max-h-screen"
+          className={`sm:min-w-[calc(100vw - 200px)] max-h-screen ${
+            routes.some((route) => route.link === pathname)
+              ? `max-sm:h-[calc(100vh - 72px)]`
+              : ""
+          }`}
           style={{
             // width: 'calc(100vw - 256px)',
             width: "100%",
