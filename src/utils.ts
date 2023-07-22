@@ -69,7 +69,6 @@ export const getRecordMapInProps = async (
   if (!recordMap) {
     return { props: {} };
   }
-  console.log({recordMap})
   return {
     props: {
       recordMap,
