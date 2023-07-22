@@ -22,7 +22,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const routes = [
   {
     name: "Home",
-    icon: "🏡",
+    icon: "🏠",
     link: "/",
   },
   {
@@ -32,7 +32,7 @@ const routes = [
   },
   {
     name: "Reading",
-    icon: "👓",
+    icon: "📚",
     link: "/reading-list",
   },
   // {
