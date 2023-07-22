@@ -64,7 +64,7 @@ export const getRecordMapInProps = async (
   if (ctx.query.local === "true") {
     return { props: {} };
   }
-  const recordMap = await getPageRecordMap(pageId, ctx.req?.headers.host || '').catch(() => {});
+  const recordMap = await getPageRecordMap(pageId, 'amighty.vercel.app').catch(() => {});
   if (!recordMap) {
     return { props: {} };
   }
