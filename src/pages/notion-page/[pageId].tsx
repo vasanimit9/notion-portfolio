@@ -3,7 +3,7 @@ import { getRecordMapInProps } from "@/utils";
 import { NextPageContext } from "next";
 import { useRouter } from "next/router";
 
-export default function NotionPageExport(props) {
+export default function NotionPageExport(props: any) {
   const { query } = useRouter();
 
   if (typeof query.pageId !== "string") {
