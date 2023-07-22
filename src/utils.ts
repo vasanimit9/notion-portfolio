@@ -3,11 +3,16 @@ import { NextPageContext } from "next";
 
 export const getPageRecordMap = async (pageId: string, hostname: string) => {
   const fetchPageData = async () =>
-    await axios.get(`https://${hostname}/api/notion-client`, {
-      params: {
-        pageId,
-      },
-    });
+    await axios.get(
+      `${
+        hostname.includes("localhost") ? "http" : "https"
+      }://${hostname}/api/notion-client`,
+      {
+        params: {
+          pageId,
+        },
+      }
+    );
 
   try {
     const pageRecordMapResponse = await fetchPageData().catch((e) => {
@@ -64,7 +69,10 @@ export const getRecordMapInProps = async (
   if (ctx.query.local === "true") {
     return { props: {} };
   }
-  const recordMap = await getPageRecordMap(pageId, ctx.req?.headers.host || '').catch(() => {});
+  const recordMap = await getPageRecordMap(
+    pageId,
+    ctx.req?.headers.host || ""
+  ).catch(() => {});
   if (!recordMap) {
     return { props: {} };
   }

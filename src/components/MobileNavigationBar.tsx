@@ -26,7 +26,7 @@ const MobileNavigationBar = (props: IMobileNavigationBarProps) => {
           className="flex flex-row border overflow-hidden rounded-xl"
           style={{
             backdropFilter: "saturate(160%) blur(8px)",
-            backgroundColor: "rgba(255, 255, 255, 0.75)",
+            backgroundColor: "rgba(255, 255, 255, 0.6)",
           }}
         >
           {routes.map((route, index) => (
