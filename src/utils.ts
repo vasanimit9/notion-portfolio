@@ -61,7 +61,6 @@ export const getRecordMapInProps = async (
   ctx: NextPageContext,
   pageId: string
 ) => {
-  console.log({pageId})
   if (ctx.query.local === "true") {
     return { props: {} };
   }
