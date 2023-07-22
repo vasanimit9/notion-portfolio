@@ -1,4 +1,8 @@
-import { getLocalizedPageRecordMap, getPageRecordMap, isPageDataLocalized, localizePageRecordMap } from "@/utils";
+import {
+  getLocalizedPageRecordMap,
+  isPageDataLocalized,
+  localizePageRecordMap,
+} from "@/utils";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
@@ -45,11 +49,13 @@ const NotionPage = (props: INotionPageProps) => {
 
   useEffect(() => {
     if (!!recordMap) {
-      localizePageRecordMap(pageId, recordMap);
+      if (props.recordMap) {
+        localizePageRecordMap(pageId, recordMap);
+      }
       document.title = `Amighty | ${recordMap.block[pageId].value.properties.title[0]}`;
       return;
     }
-    setRecordMap(getLocalizedPageRecordMap(pageId))
+    setRecordMap(getLocalizedPageRecordMap(pageId));
   }, [pageId, recordMap]);
 
   if (!recordMap) {

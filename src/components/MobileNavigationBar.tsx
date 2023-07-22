@@ -1,3 +1,4 @@
+import { isPageDataLocalized } from "@/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -6,6 +7,7 @@ interface IMobileNavigationBarProps {
     name: string;
     icon: string;
     link: string;
+    pageId: string;
   }[];
 }
 
@@ -43,7 +45,9 @@ const MobileNavigationBar = (props: IMobileNavigationBarProps) => {
                   //       : "initial",
                   // }}
                 >
-                  <div className="text-xl mb-1" style={{fontSize: '36px'}}>{route.icon}</div>
+                  <div className="text-xl mb-1" style={{ fontSize: "36px" }}>
+                    {route.icon}
+                  </div>
                   {/* <div className="text-xs">{route.name}</div> */}
                 </div>
               </div>
