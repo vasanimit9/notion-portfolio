@@ -1,12 +1,17 @@
 import NotionPage from "@/components/NotionPage";
+import { getRecordMapInProps } from "@/utils";
+import { NextPageContext } from "next";
 import { useRouter } from "next/router";
 
-export default function NotionPageExport() {
-  const {query} = useRouter();
+export default function NotionPageExport(props) {
+  const { query } = useRouter();
 
-  if(typeof query.pageId !== 'string') {
-    return <></>
+  if (typeof query.pageId !== "string") {
+    return <></>;
   }
-  
-  return <NotionPage pageId={query.pageId}  />
+
+  return <NotionPage recordMap={props.recordMap} pageId={query.pageId} />;
 }
+
+export const getServerSideProps = async (ctx: NextPageContext) =>
+  await getRecordMapInProps(ctx, ctx.query.pageId);

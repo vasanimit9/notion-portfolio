@@ -1,4 +1,4 @@
-import { getPageRecordMap } from "@/utils";
+import { getLocalizedPageRecordMap, getPageRecordMap, isPageDataLocalized, localizePageRecordMap } from "@/utils";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
@@ -32,19 +32,24 @@ const Modal = dynamic(
 
 interface INotionPageProps {
   pageId: string;
-  rendererProps?: Omit<React.ComponentProps<typeof NotionRenderer>, 'recordMap'>;
+  recordMap?: any;
+  rendererProps?: Omit<
+    React.ComponentProps<typeof NotionRenderer>,
+    "recordMap"
+  >;
 }
 
 const NotionPage = (props: INotionPageProps) => {
   const { pageId } = props;
-  const [recordMap, setRecordMap] = useState<any>();
+  const [recordMap, setRecordMap] = useState<any>(props.recordMap);
 
   useEffect(() => {
     if (!!recordMap) {
+      localizePageRecordMap(pageId, recordMap);
       document.title = `Amighty | ${recordMap.block[pageId].value.properties.title[0]}`;
       return;
     }
-    getPageRecordMap(pageId).then(setRecordMap);
+    setRecordMap(getLocalizedPageRecordMap(pageId))
   }, [pageId, recordMap]);
 
   if (!recordMap) {
@@ -80,16 +85,23 @@ const NotionPage = (props: INotionPageProps) => {
         recordMap={recordMap}
         fullPage
         mapPageUrl={(pageId) => {
-          if (pageId === "8a8bdba8-7cd6-481a-a95b-25fc0e82a615") {
-            return "../";
+          const urlSuffix = isPageDataLocalized(pageId) ? "?local=true" : "";
+          let url = ``;
+          switch (pageId) {
+            case "8a8bdba8-7cd6-481a-a95b-25fc0e82a615":
+              url = "../";
+              break;
+            case "b341973f-45ad-45c3-87b5-d925446abf05":
+              url = "../blog";
+              break;
+            case "636c5b51-90ec-48f5-b955-edb7f76335be":
+              url = "../reading-list";
+              break;
+            default:
+              url = `../notion-page/${pageId}`;
+              break;
           }
-          if (pageId === "b341973f-45ad-45c3-87b5-d925446abf05") {
-            return "../blog";
-          }
-          if (pageId === "636c5b51-90ec-48f5-b955-edb7f76335be") {
-            return "../reading-list";
-          }
-          return `./notion-page/${pageId}`;
+          return (url = `${url}${urlSuffix}`);
         }}
         components={{
           Code,
