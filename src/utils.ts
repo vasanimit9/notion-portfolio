@@ -3,7 +3,7 @@ import { NextPageContext } from "next";
 
 export const getPageRecordMap = async (pageId: string, hostname: string) => {
   const fetchPageData = async () =>
-    await axios.get(`${hostname}/api/notion-client`, {
+    await axios.get(`https://${hostname}/api/notion-client`, {
       params: {
         pageId,
       },
@@ -64,7 +64,7 @@ export const getRecordMapInProps = async (
   if (ctx.query.local === "true") {
     return { props: {} };
   }
-  const recordMap = await getPageRecordMap(pageId, 'amighty.vercel.app').catch(() => {});
+  const recordMap = await getPageRecordMap(pageId, ctx.req?.headers.host || '').catch(() => {});
   if (!recordMap) {
     return { props: {} };
   }
