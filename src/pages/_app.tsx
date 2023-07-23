@@ -82,6 +82,10 @@ export default function App({ Component, pageProps }: AppProps) {
           .notion-page-scroller {
             min-height: calc(100vh - 10px - var(--notion-header-height)) !important;
           }
+          .notion-column {
+            padding-left: 2px;
+            padding-right: 2px;
+          }
         `,
           }}
         />
