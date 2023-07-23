@@ -52,7 +52,7 @@ const NotionPage = (props: INotionPageProps) => {
       if (props.recordMap) {
         localizePageRecordMap(pageId, recordMap);
       }
-      document.title = `Amighty | ${recordMap.block[pageId].value.properties.title[0]}`;
+      document.title = `Much ADO | ${recordMap.block[pageId].value.properties.title[0]}`;
       return;
     }
     setRecordMap(getLocalizedPageRecordMap(pageId));

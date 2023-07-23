@@ -7,7 +7,6 @@ interface IMobileNavigationBarProps {
     name: string;
     icon: string;
     link: string;
-    pageId: string;
   }[];
 }
 
