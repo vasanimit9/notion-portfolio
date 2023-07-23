@@ -1,4 +1,4 @@
-let CACHE_NAME = "muchado_v8_beta_30";
+let CACHE_NAME = "muchado_v8_beta_31";
 
 let URLS_TO_CACHE = ["/", "/blog", "/reading-list"];
 
