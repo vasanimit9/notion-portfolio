@@ -26,6 +26,11 @@ const routes = [
     link: "/",
   },
   {
+    name: "Experience",
+    icon: "💻",
+    link: "/reading-list",
+  },
+  {
     name: "Blog",
     icon: "✍️",
     link: "/blog",
