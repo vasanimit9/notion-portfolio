@@ -104,7 +104,7 @@ const NotionPage = (props: INotionPageProps) => {
               url = "../reading-list";
               break;
             case "2bdc23f2-3f58-4581-9d66-90405ce37b23":
-              url = "../reading-list";
+              url = "../experience";
               break;
             default:
               url = `../notion-page/${pageId}`;
