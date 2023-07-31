@@ -66,27 +66,28 @@ const NotionPage = (props: INotionPageProps) => {
     );
   }
 
+  const styles = <style
+  dangerouslySetInnerHTML={{
+    __html: /* css */ `
+    .notion-app {
+      height: 100vh;
+      overflow: hidden;
+    }
+    .notion-frame {
+      height: 100vh;
+      overflow: hidden;
+    }
+    .notion-page-scroller {
+      overflow: auto;
+    }
+    
+  `,
+  }}
+/>;
+
   return (
     <Fragment>
-      <style
-        dangerouslySetInnerHTML={{
-          __html: /* css */ `
-          /*
-          .notion-app {
-            height: 100vh;
-            overflow: hidden;
-          }
-          .notion-frame {
-            height: 100vh;
-            overflow: hidden;
-          }
-          .notion-page-scroller {
-            overflow: auto;
-          }
-          */
-        `,
-        }}
-      />
+      {/* {styles} */}
       <NotionRenderer
         recordMap={recordMap}
         fullPage
