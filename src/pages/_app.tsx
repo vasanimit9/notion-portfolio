@@ -73,6 +73,7 @@ export default function App({ Component, pageProps }: AppProps) {
             overscroll-behavior-y: none;
           }
           .notion-header {
+            -webkit-backdrop-filter: saturate(160%) blur(16px);
             backdrop-filter: saturate(160%) blur(16px);
             background: rgba(255, 255, 255, 0.32) !important;
           }
