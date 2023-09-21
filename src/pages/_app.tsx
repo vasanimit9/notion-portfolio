@@ -60,6 +60,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <link rel="icon" type="image/x-icon" href="/mit_logo.png" sizes="any" />
         <link rel="manifest" href="/manifest.json" />
+        <meta name="google-site-verification" content="a3NZhcrjwIeJdHAHAkjA5itFgW_NYjzXyMZs9vgvOm8" />
         <style
           dangerouslySetInnerHTML={{
             __html:
