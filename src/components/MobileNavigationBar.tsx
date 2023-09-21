@@ -21,13 +21,22 @@ const MobileNavigationBar = (props: IMobileNavigationBarProps) => {
   return (
     <>
       <div className="sm:hidden fixed bottom-0 w-full bg-transparent py-2 px-3">
-        <div
-          className="flex flex-row border overflow-hidden rounded-xl"
-          style={{
-            '-webkit-backdrop-filter': "saturate(160%) blur(8px)",
-            backdropFilter: "saturate(160%) blur(8px)",
-            backgroundColor: "rgba(255, 255, 255, 0.5)",
+        <style
+          dangerouslySetInnerHTML={{
+            __html:
+              /* css */
+              `
+          #mobileNavContainer {
+            -webkit-backdrop-filter: saturate(160%) blur(8px);
+            backdrop-filter: saturate(160%) blur(8px);
+            background-color: rgba(255, 255, 255, 0.5);
+          }
+           `,
           }}
+        />
+        <div
+          id="mobileNavContainer"
+          className="flex flex-row border overflow-hidden rounded-xl"
         >
           {routes.map((route, index) => (
             <Link
