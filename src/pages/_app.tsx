@@ -16,6 +16,7 @@ import { Inter } from "next/font/google";
 import Head from "next/head";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import NextProgress from "next-progress";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -60,7 +61,10 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <link rel="icon" type="image/x-icon" href="/mit_logo.png" sizes="any" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="google-site-verification" content="a3NZhcrjwIeJdHAHAkjA5itFgW_NYjzXyMZs9vgvOm8" />
+        <meta
+          name="google-site-verification"
+          content="a3NZhcrjwIeJdHAHAkjA5itFgW_NYjzXyMZs9vgvOm8"
+        />
         <style
           dangerouslySetInnerHTML={{
             __html:
@@ -105,6 +109,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </div>
         <MobileNavigationBar routes={routes} />
+        <NextProgress />
         <script
           dangerouslySetInnerHTML={{
             __html: `
