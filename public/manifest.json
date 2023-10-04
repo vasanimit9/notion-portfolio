@@ -22,6 +22,6 @@
   "start_url": "/",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#FFFFFF",
+  "theme_color": "#000000",
   "description": "Mit Vasani's personal site"
 }
