@@ -13,5 +13,7 @@ export default function NotionPageExport(props: any) {
   return <NotionPage recordMap={props.recordMap} pageId={query.pageId} />;
 }
 
-export const getServerSideProps = async (ctx: NextPageContext) =>
-  await getRecordMapInProps(ctx, ctx.query.pageId as string);
+NotionPageExport.getInitialProps = async (ctx: NextPageContext) => {
+  const { props } = await getRecordMapInProps(ctx, ctx.query.pageId as string);
+  return props;
+};

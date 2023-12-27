@@ -11,5 +11,10 @@ export default function Blog(props: any) {
   );
 }
 
-export const getServerSideProps = async (ctx: NextPageContext) =>
-  await getRecordMapInProps(ctx, "b341973f-45ad-45c3-87b5-d925446abf05");
+Blog.getInitialProps = async (ctx: NextPageContext) => {
+  const { props } = await getRecordMapInProps(
+    ctx,
+    "b341973f-45ad-45c3-87b5-d925446abf05"
+  );
+  return props;
+};
