@@ -1,9 +1,18 @@
 import axios from "axios";
 import { NextPageContext } from "next";
 
+const localData: any = {};
+
 export const getPageRecordMap = async (pageId: string, hostname: string) => {
-  const fetchPageData = async () =>
-    await axios.get(
+  const fetchPageData = async () => {
+    if (
+      localData[pageId] &&
+      new Date().getTime() - new Date(localData[pageId].fetchTime).getTime() <
+        60 * 60 * 1000
+    ) {
+      return { data: localData[pageId].recordMap };
+    }
+    const response = await axios.get(
       `${
         hostname.includes("localhost") ? "http" : "https"
       }://${hostname}/api/notion-client`,
@@ -13,7 +22,12 @@ export const getPageRecordMap = async (pageId: string, hostname: string) => {
         },
       }
     );
-
+    localData[pageId] = {
+      recordMap: response.data,
+      fetchTime: new Date(),
+    };
+    return response;
+  };
   try {
     const pageRecordMapResponse = await fetchPageData().catch((e) => {
       console.log(e);
